@@ -8,7 +8,23 @@ html
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
   body
-    
+    header.py-4
+      .container.text-center
+        = link_to 'ShareApp', root_path
+    nav.navbar.navbar-expand-md.navbar-dark.bg-dark.sticky-top
+      .container
+        = link_to 'ShareApp', root_path, class: 'navbar-brand'
+        button.navbar-toggler type="button" data-toggle="collapse" data-target="#navbar-content" area-controls="navbar-content" aria-expanded="flase" area-label="Toggle navigation"
+          span.navbar-toggler-icon
+        #navbar-content.collapse.navbar-collapse
+          ul.navbar-nav.ml-auto
+            li.nav-item.active
+              = link_to 'Home', root_path, class: 'nav-link'
+            li.nav-item
+              = link_to 'ユーザー登録', '#', class: 'nav-link'
+            li.nav-item
+              = link_to 'ログイン', '#', class: 'nav-link'
+              
     .container
       - flash.each do |key, value|
         = content_tag(:p, value, class: 'alert alert-#{key}')

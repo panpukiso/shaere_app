@@ -23,6 +23,6 @@ end
 
 module RspecMockups
   class Application < Rails::Application
-    config.genertors.system_tests = nil
+    config.generators.system_tests = nil
   end
 end
