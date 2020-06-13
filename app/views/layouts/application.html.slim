@@ -16,6 +16,7 @@ html
         = link_to 'ShareApp', root_path, class: 'navbar-brand'
         button.navbar-toggler type="button" data-toggle="collapse" data-target="#navbar-content" area-controls="navbar-content" aria-expanded="flase" area-label="Toggle navigation"
           span.navbar-toggler-icon
+        
         #navbar-content.collapse.navbar-collapse
           ul.navbar-nav.ml-auto
             li.nav-item.active
@@ -23,8 +24,9 @@ html
             li.nav-item
               = link_to 'ユーザー登録', new_admin_user_path, class: 'nav-link'
             li.nav-item
-              = link_to 'ログイン', '#', class: 'nav-link'
-              
+              = link_to 'ログイン', login_path, class: 'nav-link'
+            li.nav-item
+              = link_to 'ログアウト', logout_path, method: :delete, class: 'nav-link'
     .container.mt-3
       .row
         .col-md-8.offset-md-2
