@@ -7,8 +7,7 @@ class Admin::UsersController < ApplicationController
     @user = User.new(user_params)
     
     if @user.save
-      flash[:success] = 'ユーザー登録が完了しました'
-      flash[:success] = 'そのままログインしちゃいまいした'
+      flash[:success] = 'そのままログインしちゃいました'
       login @user
       redirect_to admin_user_path(@user)
     else
@@ -23,8 +22,8 @@ class Admin::UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     
-    if @user.save
-      flash[:notice] = 'ユーザーを編集しました。'
+    if @user.update(user_params)
+      flash[:success] = 'ユーザーを編集しました。'
       redirect_to admin_user_path
     else
       render 'edit'
