@@ -7,7 +7,9 @@ class Admin::UsersController < ApplicationController
     @user = User.new(user_params)
     
     if @user.save
-      flash[:success] = 'ユーザー登録が完了しました。'
+      flash[:success] = 'ユーザー登録が完了しました'
+      flash[:success] = 'そのままログインしちゃいまいした'
+      login @user
       redirect_to admin_user_path(@user)
     else
       render 'new'

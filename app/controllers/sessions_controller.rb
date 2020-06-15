@@ -9,9 +9,9 @@ class SessionsController < ApplicationController
     user = User.find_by(email: session_params[:email])
     # 「ユーザーが存在する」かつ「sessionに入っているpasswordが取得したuserのpasswordと一致している」
     if user&.authenticate(session_params[:password])
-      session[:user_id] = user.id
+      login user
       flash[:success] = 'ログインしました'
-      redirect_to admin_user_path(user)
+      redirect_to admin_user_path user
     else
       render 'new'
     end
@@ -20,7 +20,7 @@ class SessionsController < ApplicationController
   def destroy
     # sessionをresetするときにsessionに入っているparamerter全てを削除
     reset_session
-    flash[:secondary] = 'ログアウト'
+    flash[:secondary] = 'ログアウトしました。'
     redirect_to root_path
   end
   

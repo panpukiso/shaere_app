@@ -8,9 +8,6 @@ html
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
   body
-    header.py-4
-      .container.text-center
-        = link_to 'ShareApp', root_path
     nav.navbar.navbar-expand-md.navbar-dark.bg-dark.sticky-top
       .container
         = link_to 'ShareApp', root_path, class: 'navbar-brand'
@@ -19,14 +16,20 @@ html
         
         #navbar-content.collapse.navbar-collapse
           ul.navbar-nav.ml-auto
-            li.nav-item.active
-              = link_to 'Home', root_path, class: 'nav-link'
-            li.nav-item
-              = link_to 'ユーザー登録', new_admin_user_path, class: 'nav-link'
-            li.nav-item
-              = link_to 'ログイン', login_path, class: 'nav-link'
-            li.nav-item
-              = link_to 'ログアウト', logout_path, method: :delete, class: 'nav-link'
+            - if current_user
+              li.nav-item.active
+                = link_to 'Home', root_path, class: 'nav-link'
+              li.nav-item
+                = link_to 'ユーザー一覧', admin_users_path, class: 'nav-link'
+              li.nav-item
+                = link_to 'ログアウト', logout_path, method: :delete, class: 'nav-link'
+            - else
+              li.nav-item.active
+                = link_to 'Home', root_path, class: 'nav-link'
+              li.nav-item
+                = link_to 'ユーザー登録', new_admin_user_path, class: 'nav-link'
+              li.nav-item
+                = link_to 'ログイン', login_path, class: 'nav-link'
     .container.mt-3
       .row
         .col-md-8.offset-md-2
