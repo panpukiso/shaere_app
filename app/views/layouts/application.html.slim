@@ -22,6 +22,10 @@ html
               li.nav-item
                 = link_to 'ユーザー一覧', admin_users_path, class: 'nav-link'
               li.nav-item
+                = link_to '過去問一覧', pdfs_path, class: 'nav-link'
+              li.nav-item
+                = link_to '過去問アップロード', new_pdf_path, class: 'nav-link'
+              li.nav-item
                 = link_to 'ログアウト', logout_path, method: :delete, class: 'nav-link'
             - else
               li.nav-item.active

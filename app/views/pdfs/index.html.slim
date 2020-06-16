@@ -1,0 +1,19 @@
+h1 Pdf一覧
+
+table.table.table-hover
+  thead.thead-default
+    tr
+      th= Pdf.human_attribute_name(:title)
+      th= Pdf.human_attribute_name(:description)
+      th=
+  tbody
+    - @pdfs.each do |pdf|
+      tr
+        td= link_to pdf.title, rails_blob_path(pdf.file)
+        td= pdf.description
+        - if current_user.id == pdf.user_id
+          td
+            = link_to '編集', edit_pdf_path(pdf), class: 'btn btn-primary mr-1 '
+            = link_to '削除', pdf_path(pdf), method: :delete, data: {confirm: "過去問「#{pdf.title}」を削除します。よろしいですか"}, class: 'btn btn-secondary'
+        - else
+          td=

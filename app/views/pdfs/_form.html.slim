@@ -1,0 +1,17 @@
+- if @pdf.errors.present?
+  = @pdf.errors.full_messages.each do |message|
+    li.alert.alert-danger= message
+    
+.row
+  .col-lg-6.offset-lg-3
+    = form_with model: @pdf, local: true do |f|
+      .form-group
+        = f.label :title, '授業名/タイトル'
+        = f.text_field :title, class: 'form-control'
+      .form-group
+        = f.label :description, '説明'
+        = f.text_area :description, class: 'form-control'
+      .form-group
+        = f.label 'PDFファイル',class: 'mr-2'
+        = f.file_field :file
+      = f.submit '登録する', class: 'btn btn-primary'

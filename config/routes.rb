@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :pdfs
+  
   # resources :sessions, only: [:new, :create, :destroy]
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
